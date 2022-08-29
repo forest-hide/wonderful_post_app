@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <div class="container-fluid">
+    <%#------TOPへのリンク設置-------%>
+    <%= link_to "TOP", root_path, class: "btn btn-primary" %>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%#------認証の各ボタン設置------%>
+            <%= button_to "ログアウト", destroy_user_session_path, method: :destory %>
+          </li>
+        <% else %>
+            <%#------認証の各ボタン設置-------%>
+            <%# アカウント登録画面に移動させたい%>
+          <li class="nav-item">
+            <%= button_to "サインアップ", new_user_registration_path, method: :get %>
+          </li>
+          <li class="nav-item">
+            <%#------認証の各ボタン設置------%>
+            <%# localhost:3000/users/sign_upに移動させたい%>
+            <%= button_to "ログイン", new_user_session_path, method: :get %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
